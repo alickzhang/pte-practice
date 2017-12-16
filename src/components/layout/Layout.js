@@ -16,12 +16,14 @@ const Layout = (props =>
         <Menu.Item key="/"><Link to="/">Home</Link></Menu.Item>
         <Menu.Item key="/reading"><Link to="/reading">Reading</Link></Menu.Item>
         <Menu.Item key="/sst"><Link to="/sst">SST</Link></Menu.Item>
+        <Menu.Item key="/wfd"><Link to="/wfd">WFD</Link></Menu.Item>
+        <Menu.Item key="/word"><Link to="/word">Word</Link></Menu.Item>
       </Menu>
     </Header>
     <Content>
       {props.children}
     </Content>
-    <Footer>
+    <Footer style={{ backgroundColor: '#fff' }}>
       PTE Practice &copy; 2017 Alick Zhang. All Rights Reserved.
     </Footer>
   </AntLayout>
