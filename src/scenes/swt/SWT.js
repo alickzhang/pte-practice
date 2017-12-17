@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Row, Col, Table, BackTop } from 'antd';
 
 import Layout from '../../components/layout/Layout';
-import data from '../../data/sst.json';
+import data from '../../data/swt.json';
 
-export default class SST extends Component {
+export default class SWT extends Component {
 
   state = { data: [] }
 
@@ -24,7 +24,7 @@ export default class SST extends Component {
       <Layout>
         <Row type="flex" justify="center">
           <Col span={22} style={{ textAlign: 'center' }}>
-            <h1>Summarize Spoken Text (SST)</h1>
+            <h1>Summarize Written Text (SWT)</h1>
           </Col>
           <Col span={22}>
             <Table

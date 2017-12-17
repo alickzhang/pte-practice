@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Row, Col, Table, Anchor } from 'antd';
+import { Row, Col, Table, Anchor, BackTop } from 'antd';
 import _ from 'lodash';
 
 import Layout from '../../components/layout/Layout';
@@ -27,8 +27,8 @@ export default class Word extends Component {
     ];
     return (
       <Layout>
-        <Row type="flex" justify="space-around" style={{ padding: '20px', backgroundColor: '#fff' }}>
-          <Col span={14} style={{ fontSize: '16px', textAlign: 'right' }}>
+        <Row type="flex" justify="space-around">
+          <Col span={14} style={{ margin: '20px 0', fontSize: '16px', textAlign: 'right' }}>
             <span>{`Total: ${count}`}</span>
           </Col>
           <Col span={18}>
@@ -57,6 +57,7 @@ export default class Word extends Component {
             </Anchor>
           </Col>
         </Row>
+        <BackTop />
       </Layout>
     );
   }

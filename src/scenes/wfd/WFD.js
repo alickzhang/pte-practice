@@ -105,10 +105,10 @@ export default class WFD extends Component {
     return (
       <Layout>
         <Row type="flex" justify="center">
-          <Col span={20} style={{ textAlign: 'center' }}>
-            <h1>WFD</h1>
+          <Col span={22} style={{ textAlign: 'center' }}>
+            <h1>Write From Dictation (WFD)</h1>
           </Col>
-          <Col span={20} style={{ margin: '40px' }}>
+          <Col span={22} style={{ margin: '20px' }}>
             <span style={{ fontWeight: 700, float: 'left', marginRight: '10px' }} >开启测试模式</span>
             <Switch onChange={this.onSwitch} />
             <span style={{ fontWeight: 700, float: 'right' }}>
@@ -116,7 +116,7 @@ export default class WFD extends Component {
               <a href="http://www.ximalaya.com/81407276/album/8201165" target="_blank" rel="noopener noreferrer">PTE黑科技最新WFD</a>
             </span>
           </Col>
-          <Col span={20}>
+          <Col span={22}>
             {
               Object.entries(data).map(([key, value]) =>
                 <TableItem key={key} title={key} data={value} test={test} />

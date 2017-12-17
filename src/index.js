@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import registerServiceWorker from './registerServiceWorker';
 import Home from './scenes/home/Home';
-import Reading from './scenes/reading/Reading';
+import RP from './scenes/rp/RP';
+import SWT from './scenes/swt/SWT';
 import SST from './scenes/sst/SST';
 import WFD from './scenes/wfd/WFD';
 import Word from './scenes/word/Word';
@@ -15,7 +16,8 @@ ReactDOM.render(
   <Router>
     <Fragment>
       <Route exact path="/" component={Home} />
-      <Route path="/reading" component={Reading} />
+      <Route path="/rp" component={RP} />
+      <Route path="/swt" component={SWT} />
       <Route path="/sst" component={SST} />
       <Route path="/wfd" component={WFD} />
       <Route path="/word" component={Word} />
