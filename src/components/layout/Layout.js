@@ -28,7 +28,7 @@ const Layout = (props =>
           <Menu.Item key="/sst"><Link to="/sst">SST</Link></Menu.Item>
           <Menu.Item key="/wfd"><Link to="/wfd">WFD</Link></Menu.Item>
         </SubMenu>
-        <Menu.Item key="/word"><Link to="/word">Word</Link></Menu.Item>
+        <Menu.Item key="/vocabulary"><Link to="/vocabulary">Vocabulary</Link></Menu.Item>
       </Menu>
     </Header>
     <Content style={{ padding: '0 50px', backgroundColor: '#fff' }}>

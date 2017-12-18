@@ -6,6 +6,7 @@ import data from '../../data/reorder.json';
 export default class RP extends Component {
 
   componentWillMount() {
+    console.log(data);
   }
 
   render() {

@@ -109,7 +109,7 @@ export default class WFD extends Component {
             <h1>Write From Dictation (WFD)</h1>
           </Col>
           <Col span={22} style={{ margin: '20px' }}>
-            <span style={{ fontWeight: 700, float: 'left', marginRight: '10px' }} >开启测试模式</span>
+            <span style={{ fontWeight: 700, float: 'left', marginRight: '10px' }}>开启测试模式</span>
             <Switch onChange={this.onSwitch} />
             <span style={{ fontWeight: 700, float: 'right' }}>
               听力材料请访问：
