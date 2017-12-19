@@ -3,7 +3,7 @@ import { Row, Col, Table, Input, Switch, BackTop, Button, Icon } from 'antd';
 import _ from 'lodash';
 
 import Layout from '../../components/layout/Layout';
-import wfd from '../../data/wfd.json';
+import wfd from '../../data/wfd2.json';
 
 const { TextArea } = Input;
 
@@ -61,16 +61,16 @@ class TableItem extends Component {
     const { title, data, filteredData } = this.state;
     const dataSource = showLearning ? filteredData : data;
     const columns = [
-      { key: 'id', dataIndex: 'id', title: 'ID', width: '5%' },
-      { key: 'text', title: 'Text', width: '30%', render: (text, record) => (
+      { key: 'id', dataIndex: 'id', title: 'ID', width: '6%' },
+      { key: 'text', title: 'Text', width: '34%', render: (text, record) => (
           test === false && <div>{record.text}</div>
         )
       },
-      { key: 'input', title: 'Answer', width: '55%', render: (text, record) => (
+      { key: 'input', title: 'Answer', width: '50%', render: (text, record) => (
           <TextArea onBlur={(e) => this.onBlur(e, record)} onFocus={(e) => this.onFocus(e, record)} spellCheck={false} />
         )
       },
-      { key: 'correct', title: 'Check', width: '5%', render: (text, record) => (
+      { key: 'correct', width: '5%', render: (text, record) => (
           <div>{ record.correct ? <Icon type="like" style={{ color: 'green', fontSize: '18px' }} /> : (record.correct === false && <Icon type="dislike" style={{ color: 'red', fontSize: '18px' }} />) }</div>
         )
       },
