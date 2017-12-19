@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Row, Col, Table, Input, Switch, BackTop, Button, Icon } from 'antd';
+import _ from 'lodash';
 
 import Layout from '../../components/layout/Layout';
 import wfd from '../../data/wfd.json';
@@ -12,7 +13,8 @@ class TableItem extends Component {
     super(props);
     this.state = {
       title: props.title,
-      data: props.data
+      data: props.data,
+      filteredData: _.filter(props.data, item => !item.master)
     };
   }
 
@@ -49,9 +51,15 @@ class TableItem extends Component {
     this.setState({ data });
   }
 
+  onFocus = (e, record) => {
+    const msg = new SpeechSynthesisUtterance(record.text);
+    window.speechSynthesis.speak(msg);
+  }
+
   render() {
-    const { test } = this.props;
-    const { title, data } = this.state;
+    const { test, showLearning } = this.props;
+    const { title, data, filteredData } = this.state;
+    const dataSource = showLearning ? filteredData : data;
     const columns = [
       { key: 'id', dataIndex: 'id', title: 'ID', width: '5%' },
       { key: 'text', title: 'Text', width: '30%', render: (text, record) => (
@@ -59,7 +67,7 @@ class TableItem extends Component {
         )
       },
       { key: 'input', title: 'Answer', width: '55%', render: (text, record) => (
-          <TextArea onBlur={(e) => this.onBlur(e, record)} spellCheck={false} />
+          <TextArea onBlur={(e) => this.onBlur(e, record)} onFocus={(e) => this.onFocus(e, record)} spellCheck={false} />
         )
       },
       { key: 'correct', title: 'Check', width: '5%', render: (text, record) => (
@@ -77,7 +85,7 @@ class TableItem extends Component {
         <Button type="primary" size="large" onClick={this.onSubmit} style={{ float: 'right' }}>Submit</Button>
         <Table
           columns={columns}
-          dataSource={data}
+          dataSource={dataSource}
           rowKey={record => record.id}
           pagination={false}
           style={{ marginBottom: '40px', clear: 'both' }}
@@ -89,37 +97,38 @@ class TableItem extends Component {
 
 export default class WFD extends Component {
 
-  state = { data: [], test: false }
+  state = { data: [], test: false, showLearning: false }
 
   componentWillMount() {
     const data = wfd;
     this.setState({ data });
   }
 
-  onSwitch = (checked) => {
+  onTestSwitch = (checked) => {
     this.setState({ test: checked });
   }
 
+  onShowLearningSwitch = (checked) => {
+    this.setState({ showLearning: checked });
+  }
+
   render() {
-    const { data, test } = this.state;
+    const { data, test, showLearning } = this.state;
     return (
       <Layout>
         <Row type="flex" justify="center">
           <Col span={22} style={{ textAlign: 'center' }}>
             <h1>Write From Dictation (WFD)</h1>
           </Col>
-          <Col span={22} style={{ margin: '20px' }}>
-            <span style={{ fontWeight: 700, float: 'left', marginRight: '10px' }}>开启测试模式</span>
-            <Switch onChange={this.onSwitch} />
-            <span style={{ fontWeight: 700, float: 'right' }}>
-              听力材料请访问：
-              <a href="http://www.ximalaya.com/81407276/album/8201165" target="_blank" rel="noopener noreferrer">PTE黑科技最新WFD</a>
-            </span>
+          <Col span={22} style={{ margin: '20px', display: 'flex', justifyContent: 'space-between', fontWeight: 700 }}>
+            <div style={{ marginRight: '10px' }}>开启测试模式 <Switch onChange={this.onTestSwitch} /></div>
+            <div style={{ marginRight: 'auto' }}>隐藏已掌握题目 <Switch onChange={this.onShowLearningSwitch} /></div>
+            <div>听力材料请访问：<a href="http://www.ximalaya.com/81407276/album/8201165" target="_blank" rel="noopener noreferrer">PTE黑科技最新WFD</a></div>
           </Col>
           <Col span={22}>
             {
               Object.entries(data).map(([key, value]) =>
-                <TableItem key={key} title={key} data={value} test={test} />
+                <TableItem key={key} title={key} data={value} test={test} showLearning={showLearning} />
               )
             }
           </Col>
