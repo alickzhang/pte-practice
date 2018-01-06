@@ -21,7 +21,7 @@ class TableItem extends Component {
   onSubmit = () => {
     let { data } = this.state;
     data.forEach(item => {
-      const index = item.id - 1;
+      const index = data.findIndex(entry => entry.id === item.id);
       if (data[index].input === data[index].text) {
         data[index].correct = true;
       } else {
@@ -32,10 +32,10 @@ class TableItem extends Component {
   }
 
   onCheck = (record) => {
-    const { id } = record;
     let { data } = this.state;
-    const index = id - 1;
-    if (data[index].input === data[index].text) {
+    const { id, input, text } = record;
+    const index = data.findIndex(item => item.id === id);
+    if (input === text) {
       data[index].correct = true;
     } else {
       data[index].correct = false;
@@ -44,10 +44,10 @@ class TableItem extends Component {
   }
 
   onBlur = (e, record) => {
-    const { value } = e.target;
-    const { id } = record;
     let { data } = this.state;
-    data[id - 1].input = value;
+    const { value } = e.target;
+    const index = data.findIndex(item => item.id === record.id);
+    data[index].input = value;
     this.setState({ data });
   }
 
