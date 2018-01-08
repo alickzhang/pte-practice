@@ -16,6 +16,7 @@ const Layout = (props =>
       >
         <Menu.Item key="/"><Link to="/">Home</Link></Menu.Item>
         <SubMenu title="Speaking">
+          <Menu.Item key="/rs"><Link to="/rs">Repeat Sentence</Link></Menu.Item>
           <Menu.Item key="/rl"><Link to="/rl">Retell Lecture</Link></Menu.Item>
         </SubMenu>
         <SubMenu title="Writing">

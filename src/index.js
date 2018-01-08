@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import registerServiceWorker from './registerServiceWorker';
 import Home from './scenes/home/Home';
+import RS from './scenes/rs/RS';
 import RP from './scenes/rp/RP';
 import SWT from './scenes/swt/SWT';
 import SST from './scenes/sst/SST';
@@ -16,6 +17,7 @@ ReactDOM.render(
   <Router>
     <Fragment>
       <Route exact path="/" component={Home} />
+      <Route path="/rs" component={RS} />
       <Route path="/rp" component={RP} />
       <Route path="/swt" component={SWT} />
       <Route path="/sst" component={SST} />
