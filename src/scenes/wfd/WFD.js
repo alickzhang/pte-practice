@@ -82,6 +82,7 @@ class TableItem extends Component {
     return (
       <Fragment key={title}>
         <h2 style={{ float: 'left', marginBottom: '20px' }}>{title}</h2>
+        <h2 style={{ float: 'left', marginLeft: '20px' }}>{`未掌握题目/Total: ${filteredData.length}/${data.length}`}</h2>
         <Button type="primary" size="large" onClick={this.onSubmit} style={{ float: 'right' }}>Submit</Button>
         <Table
           columns={columns}

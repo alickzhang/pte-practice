@@ -17,8 +17,9 @@ export default class SST extends Component {
     const columns = [
       { key: 'id', dataIndex: 'id', title: 'ID', width: '5%' },
       { key: 'title', dataIndex: 'title', title: 'Title', width: '15%' },
-      { key: 'keywords', dataIndex: 'keywords', title: 'Keywords', width: '35%' },
-      { key: 'answer', dataIndex: 'answer', title: 'Answer', width: '45%' }
+      { key: 'keywords', dataIndex: 'keywords', title: 'Keywords', width: '25%' },
+      { key: 'answer', dataIndex: 'answer', title: 'Answer', width: '45%' },
+      { key: 'word count', title: 'Word count', width: '10%', render: (text, record) => <span>{record.answer.trim().split(/\s+/).length}</span> },
     ];
     return (
       <Layout>
